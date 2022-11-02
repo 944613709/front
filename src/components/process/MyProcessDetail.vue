@@ -192,7 +192,7 @@ export default {
         let target_task = dataApi.getTaskByNodeAntvx6Id(targetNode_id,this.Tasks_List)
         let target_task_message = target_task.message
 
-        let alert_content = 'source:'+ ' ' + source_task_message + ' ' +'\n' +'target:' + ' ' + target_task_message
+        let alert_content = 'source:'+ ' ' + source_task_message + ' ' +'\r\n' +'target:' + ' ' + target_task_message
         this.myAlertPop("查询到该边信息",alert_content)
       })
     },

@@ -113,6 +113,7 @@
   }
   .modal-main {
       padding: 15px 40px;
+      white-space: pre-wrap;
   }
   </style>
   
