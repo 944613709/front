@@ -20,10 +20,10 @@
       </el-form-item>
     <div div-lc-mark>
       <el-tag>状态选择</el-tag>
-      <el-radio-group v-model="formData.radio">
-        <el-radio :label="0">NotDone</el-radio>
-        <el-radio :label="1">Done</el-radio>
-      </el-radio-group>
+      <el-select v-model="formData.radio" clearable placeholder="请选择状态">
+        <el-option v-for="(item,index) in options" :label="item.label" :key="index" :value="item.value">
+        </el-option>
+      </el-select>
       <div div-lc-mark></div>
     </div>
     <div div-lc-mark>
@@ -80,12 +80,27 @@
 import api from '/src/js/api.js'
 import MyAlert from "../utils/MyAlert.vue"
   export default {
+    name:'processchoice',
     props: [],
     components: {
       'my-alert':MyAlert,
     },
     data() {
       return {
+        options:[
+          {
+            value: 0,
+            label: "notDone"
+          },
+          {
+            value: 1,
+            label: "Done"
+          },
+          // {
+          //   value: null,
+          //   label: "Null"
+          // }
+        ],
         active: 0,//初始化当前的步骤index=0
         myAlert: {
               title:"提示",
@@ -102,7 +117,7 @@ import MyAlert from "../utils/MyAlert.vue"
         formData:{//日期时间
                     start: null,
                     end: null,
-                    radio: 0,//状态存储，radio=1代表done，=0代表notDone
+                    radio: null,//状态存储，radio=1代表done，=0代表notDone
                   },
               }
           },
@@ -132,6 +147,11 @@ import MyAlert from "../utils/MyAlert.vue"
           this.myAlert.show=false
         },
       onQueryButtonClick(){
+        //如果radio不选之后变为“”，手动改为null
+        if(this.formData.radio=="")
+        {
+          this.formData.radio=null
+        }   
         api.queryExecution(this.formData.radio,this.formData.start,this.formData.end).then(res =>{
           console.log("radio状态="+this.formData.radio)
           console.log("开始时间"+this.formData.start)

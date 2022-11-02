@@ -8,7 +8,9 @@
   <my-aside></my-aside>
   <!-- 右侧内容主体区域 -->
   <div class="home-main-body">
-    <router-view></router-view>
+    <keep-alive include="processchoice">  
+      <router-view />
+    </keep-alive>
   </div>
   </div>
   </div>

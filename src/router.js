@@ -14,8 +14,8 @@ const router = createRouter({
          redirect:'/home/nodes',
          children:[
            { path:'nodes',component:Nodes},
-           { path: 'processchoice', component: ProcessChoice },
-           { path: 'process/:executionId', component: ProcessDetail , props: true},
+           { path: 'processchoice', name:'processchoice' ,component: ProcessChoice, meta: { keepAlive: true } },
+           { path: 'process/:executionId', component: ProcessDetail , props: true,meta: { keepAlive: false }},
            { path: 'nodes/:id', component: NodeDetail , props: true},
          ]
         },

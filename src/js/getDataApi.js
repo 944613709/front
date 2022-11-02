@@ -10,15 +10,6 @@ const dateApi ={
          await api.getNodeByNodeId(nodeId).then(
            res => {
             node = res.data.valueMap.data
-            if(res.data.code != 0)//出错
-            {
-              console.log("错误")
-              this.$message({
-              type:'error',
-              message:"请求错误"
-              })
-              return null
-            }
            }
          )
          return node
@@ -33,15 +24,6 @@ const dateApi ={
         await api.getProExecutionByProExecutionId(proExecutionId).then(
           res => {
             proExecution = res.data.valueMap.data
-            if(res.data.code != 0)//出错
-            {
-              console.log("错误")
-              this.$message({
-              type:'error',
-              message:"请求错误"
-              })
-              return null
-            }
           }
         )
         return proExecution
@@ -56,15 +38,6 @@ const dateApi ={
         let proExecutions;
         await api.getProExecutionsByExecutionId(executionId).then(res=>{
           proExecutions = res.data.valueMap.data
-          if(res.data.code != 0)//出错
-          {
-            console.log("错误")
-            this.$message({
-            type:'error',
-            message:"请求错误"
-            })
-            return null
-          }
         })
         return proExecutions;
     },
@@ -77,15 +50,6 @@ const dateApi ={
         let tasks;
         await api.getTasksByProExecutionId(proExecutionId).then(res=>{
           tasks  = res.data.valueMap.data
-          if(res.data.code != 0)//出错
-          {
-            console.log("错误")
-            this.$message({
-            type:'error',
-            message:"请求错误"
-            })
-            return null
-          }
         })
         return tasks;
     },
