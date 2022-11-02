@@ -100,8 +100,8 @@ import MyAlert from "../utils/MyAlert.vue"
                 totalCount: 0,//总条数
               },
         formData:{//日期时间
-                    start:'',
-                    end:'',
+                    start: null,
+                    end: null,
                     radio: 0,//状态存储，radio=1代表done，=0代表notDone
                   },
               }
@@ -146,7 +146,7 @@ import MyAlert from "../utils/MyAlert.vue"
             console.log("错误")
               this.$message({
               type:'error',
-              message:res.data.msg
+              message:"请求错误"
               })
                 this.proExecutionList = []
                 this.page.totalCount = 0

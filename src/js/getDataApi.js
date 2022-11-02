@@ -10,6 +10,15 @@ const dateApi ={
          await api.getNodeByNodeId(nodeId).then(
            res => {
             node = res.data.valueMap.data
+            if(res.data.code != 0)//出错
+            {
+              console.log("错误")
+              this.$message({
+              type:'error',
+              message:"请求错误"
+              })
+              return null
+            }
            }
          )
          return node
@@ -24,6 +33,15 @@ const dateApi ={
         await api.getProExecutionByProExecutionId(proExecutionId).then(
           res => {
             proExecution = res.data.valueMap.data
+            if(res.data.code != 0)//出错
+            {
+              console.log("错误")
+              this.$message({
+              type:'error',
+              message:"请求错误"
+              })
+              return null
+            }
           }
         )
         return proExecution
@@ -37,9 +55,16 @@ const dateApi ={
     {
         let proExecutions;
         await api.getProExecutionsByExecutionId(executionId).then(res=>{
-        // console.log("传入成功getProExecutions:")
-        // console.log(res.data.valueMap.data)
-        proExecutions = res.data.valueMap.data
+          proExecutions = res.data.valueMap.data
+          if(res.data.code != 0)//出错
+          {
+            console.log("错误")
+            this.$message({
+            type:'error',
+            message:"请求错误"
+            })
+            return null
+          }
         })
         return proExecutions;
     },
@@ -51,9 +76,16 @@ const dateApi ={
      async getTasksByProExecutionId(proExecutionId){
         let tasks;
         await api.getTasksByProExecutionId(proExecutionId).then(res=>{
-        tasks  = res.data.valueMap.data
-        // console.log("传入成功tasks")
-        // console.log(tasks)
+          tasks  = res.data.valueMap.data
+          if(res.data.code != 0)//出错
+          {
+            console.log("错误")
+            this.$message({
+            type:'error',
+            message:"请求错误"
+            })
+            return null
+          }
         })
         return tasks;
     },
@@ -109,7 +141,7 @@ const dateApi ={
             })
         }
 
-          //先让本ProExeution的第一Seq节点去找到parentProcessNode，连接上1个ProExeution的末尾
+        //先让本ProExeution的第一Seq节点去找到parentProcessNode，连接上1个ProExeution的末尾
         //连接上1个ProExeution的末尾
         //找到last_Node,让本ProExeution的seq=1的所有节点去连接上一个ProExeution的末尾last_node
         {

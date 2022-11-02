@@ -294,7 +294,13 @@ export default {
       for(let i = 0; i < this.Tasks_List.length;i++)
       {
         let tasks = this.Tasks_List[i]
-        let proExecution = this.proExecutions[i]
+        let proExecution
+        this.proExecutions.forEach((item)=>{
+          if(tasks[0].proExecutionId == item.id)
+          {
+            proExecution = item
+          }
+        })
         this.data_with_nodes_edges = await dataApi.addNodesEdgesByTasks(tasks,this.data_with_nodes_edges,proExecution)
       }
       let graphdata_with_nodes_edges = dagreLayout.layout(this.data_with_nodes_edges)
@@ -319,7 +325,7 @@ export default {
                 modifiers: 'shift',
             },
           container: document.getElementById('container'),
-          width: 1400,
+          width: 2100,
           height: 600,
           // background: {
           //   color: '#fffbe6', // 设置画布背景颜色
