@@ -325,8 +325,8 @@ export default {
                 modifiers: 'shift',
             },
           container: document.getElementById('container'),
-          width: 2100,
-          height: 600,
+          width: 3500,
+          height: 700,
           // background: {
           //   color: '#fffbe6', // 设置画布背景颜色
           // },

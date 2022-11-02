@@ -125,9 +125,9 @@ const dateApi ={
             //处理nodes
             dataForNodesEdges.nodes.push({
               id: node_antvx6_id,//记录的id是 proExecutionId_processNodeId,比如:189_1
-              shape: 'rect',
-              width: 60,
-              height: 30,
+              shape: 'ellipse',
+              width: 105,
+              height: 40,
               label: processNodeName,//标签为processNodeName比如 设计部
               attrs: {
                 body: {
